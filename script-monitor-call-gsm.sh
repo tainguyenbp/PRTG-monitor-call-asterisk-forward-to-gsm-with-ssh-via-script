@@ -1,0 +1,11 @@
+TOTAL_CALLS_GSM_PREFIX_211=0
+LIST_NAME_GSM=("Dial(SIP/TRUNK-GSMCH13/" "Dial(SIP/TRUNK-GSMCH15/" "Dial(SIP/TRUNK-GSMCH11/" "Dial(SIP/TRUNK-GSM80NEW11/" "Dial(SIP/TRUNK-GSM80NEW13/" "Dial(SIP/TRUNK-GSM80NEW15/" "Dial(SIP/TRUNK-GSM78NEW12/" "Dial(SIP/TRUNK-GSM78NEW13/" "Dial(SIP/TRUNK-GSM78NEW14/" "Dial(SIP/TRUNK-GSM78NEW15/" "Dial(SIP/TRUNK-GSM78NEW16/" "Dial(SIP/TRUNK-GSM80NEW162/" "Dial(SIP/TRUNK-GSM80NEW163/" "Dial(SIP/TRUNK-GSM80NEW164/")
+for call_gsm_prefix_211 in "${LIST_NAME_GSM[@]}"
+do
+
+        value_call_gsm_prefix_211=`asterisk -rx "core show channels" | grep "$call_gsm_prefix_211" | wc -l`
+        TOTAL_CALLS_GSM_PREFIX_211=`expr $TOTAL_CALLS_GSM_PREFIX_211 + $value_call_gsm_prefix_211`
+
+done
+
+echo "0:"$TOTAL_CALLS_GSM_PREFIX_211":OK `date`"
